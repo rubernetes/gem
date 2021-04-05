@@ -9,6 +9,8 @@
 /test/tmp/
 /test/version_tmp/
 /tmp/
+# rspec failure tracking
+.rspec_status
 
 # Used by dotenv library to load environment variables.
 # .env
