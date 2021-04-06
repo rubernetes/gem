@@ -1,0 +1,27 @@
+name: Ruby CI
+
+on: [pull_request]
+
+jobs:
+  test:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        ruby-version: ['2.4', '2.5', '2.6', '2.7', '3.0']
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby-version }}
+        bundler-cache: true
+    - name: Build and test with RSpec
+      run: |
+        gem install bundler -v 2.2.8
+        bundle install
+        bundle exec rspec
+    - name: Rubocop
+      run: bundle exec rubocop
