@@ -1,7 +1,13 @@
-source "https://rubygems.org"
+# frozen_string_literal: true
+
+source 'https://rubygems.org'
 
 # Specify your gem's dependencies in rubernetes.gemspec
 gemspec
 
-gem "rake", "~> 12.0"
-gem "rspec", "~> 3.0"
+gem 'rake', '~> 12.0'
+gem 'rspec', '~> 3.0'
+
+gem 'rubocop', '~> 1.12', require: false
+gem 'rubocop-rake', '~> 0.5.1', require: false
+gem 'rubocop-rspec', '~> 2.2', require: false
