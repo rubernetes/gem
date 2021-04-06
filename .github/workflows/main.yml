@@ -18,10 +18,21 @@ jobs:
       with:
         ruby-version: ${{ matrix.ruby-version }}
         bundler-cache: true
+
     - name: Build and test with RSpec
       run: |
         gem install bundler -v 2.2.8
         bundle install
         bundle exec rspec
-    - name: Rubocop
-      run: bundle exec rubocop
+
+    - name: Rubocop run
+      run: |
+        bash -c "
+          bundle exec rubocop --require code_scanning --format CodeScanning::SarifFormatter -o rubocop.sarif
+          [[ $? -ne 2 ]]
+        "
+
+    - name: Upload Sarif output
+      uses: github/codeql-action/upload-sarif@v1
+      with:
+        sarif_file: rubocop.sarif
