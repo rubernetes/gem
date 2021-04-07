@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
     # "allowed_push_host" => "TODO: Set to 'http://mygemserver.com'"
     'bug_tracker_uri' => "#{spec.homepage}/issues",
     # "changelog_uri"     => "#{spec.homepage}/releases/tag/v#{version}",
-    'documentation_uri' => "https://rubydoc.info/#{spec.homepage.gsub(%r{^https?://}, '')}",
+    'documentation_uri' => "https://rubydoc.info/#{spec.homepage.gsub(%r{^https?://([^.]+)\.com}, '\1')}",
     'homepage_uri' => spec.homepage,
     'source_code_uri' => spec.homepage.to_s # /tree/v#{version}
   }
