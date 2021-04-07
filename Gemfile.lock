@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rubernetes (0.0.0)
+    rubernetes (0.1.0)
 
 GEM
   remote: https://rubygems.org/
