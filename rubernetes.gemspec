@@ -12,8 +12,8 @@ Gem::Specification.new do |spec|
 
   spec.license = 'MIT'
 
-  spec.authors  = ['Tarek N. Samni', 'Ramy Aboul Naga']
-  spec.email    = ['tarek.samni@gmail.com', 'ramy.naga@gmail.com']
+  spec.authors  = ['Tarek N. Samni', 'Ramy Aboul Naga', 'Hesham Youssef']
+  spec.email    = ['tarek.samni@gmail.com', 'ramy.naga@gmail.com', 'heshamyoussef79@gmail.com']
   spec.homepage = 'https://github.com/rubernetes/gem'
 
   spec.metadata = {
