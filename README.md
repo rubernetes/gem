@@ -1,6 +1,8 @@
 # Rubernetes
 A ruby gem to provide the base for building Kubernetes custom resources controllers in Ruby.
 
+![logo](./assets/logo.gif)
+
 ## Installation
 
 Add this line to your application's Gemfile:
