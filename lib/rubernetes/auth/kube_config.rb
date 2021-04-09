@@ -8,7 +8,7 @@ module Rubernetes
     class KubeConfig
       def initialize
         config_path = ENV.fetch('KUBECONFIG', "#{Dir.home}/.kube/config")
-        config = Kubeclient::Config.read(config_file)
+        config = Kubeclient::Config.read(config_path)
         @context = config.context
       end
 
