@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.summary     = 'Build Kubernetes custom resources controllers in Ruby.'
   spec.description = 'A ruby gem to provide the base for building Kubernetes custom resources controllers in Ruby.'
 
-  spec.required_ruby_version = Gem::Requirement.new('>= 2.4.0')
+  spec.required_ruby_version = Gem::Requirement.new('>= 2.5.0')
 
   spec.license = 'MIT'
 
