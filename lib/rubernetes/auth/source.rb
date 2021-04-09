@@ -26,7 +26,7 @@ module Rubernetes
       private
 
       def service_account?
-        File.exist?('/var/run/secrets/kubernetes.io/serviceaccount/token')
+        File.exist?(ServiceAccount::TOKEN_PATH)
       end
 
       def kube_config?

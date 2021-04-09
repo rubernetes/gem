@@ -6,6 +6,9 @@ module Rubernetes
     # It assumes that the serviceaccount crt/token is mounted at
     # `/var/run/secrets/kubernetes.io/serviceaccount`.
     class ServiceAccount
+      CRT_PATH = '/var/run/secrets/kubernetes.io/serviceaccount/ca.crt'
+      TOKEN_PATH = '/var/run/secrets/kubernetes.io/serviceaccount/token'
+
       def initialize; end
 
       def api_endpoint
@@ -13,8 +16,8 @@ module Rubernetes
       end
 
       def ssl_options
-        @ssl_options ||= if File.exist?('/var/run/secrets/kubernetes.io/serviceaccount/ca.crt')
-                           return { ca_file: '/var/run/secrets/kubernetes.io/serviceaccount/ca.crt' }
+        @ssl_options ||= if File.exist?(CRT_PATH)
+                           return { ca_file: CRT_PATH }
                          else
                            {}
                          end
@@ -22,7 +25,7 @@ module Rubernetes
 
       def auth_options
         @auth_options ||= {
-          bearer_token_file: '/var/run/secrets/kubernetes.io/serviceaccount/token'
+          bearer_token_file: TOKEN_PATH
         }
       end
     end
