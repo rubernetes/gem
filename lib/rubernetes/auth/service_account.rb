@@ -17,7 +17,7 @@ module Rubernetes
 
       def ssl_options
         @ssl_options ||= if File.exist?(CRT_PATH)
-                           return { ca_file: CRT_PATH }
+                           { ca_file: CRT_PATH }
                          else
                            {}
                          end
