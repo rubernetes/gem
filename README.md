@@ -1,4 +1,4 @@
-# Rubernetes
+# <span style="color:blue">Rub</span><span style="color:red">ernetes</span>
 A ruby gem to provide the base for building Kubernetes custom resources controllers in Ruby.
 
 ![logo](./assets/logo.gif)
