@@ -7,6 +7,7 @@ gemspec
 
 gem 'rake', '~> 12.0'
 gem 'rspec', '~> 3.0'
+gem 'yard'
 
 gem 'code-scanning-rubocop', '~> 0.5.0', require: false
 gem 'rubocop', '~> 1.12', require: false
