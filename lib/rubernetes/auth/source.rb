@@ -30,10 +30,10 @@ module Rubernetes
       end
 
       def kube_config?
-        File.exist?(kubec_onfig_path)
+        File.exist?(kube_config_path)
       end
 
-      def kubec_onfig_path
+      def kube_config_path
         ENV.fetch('KUBECONFIG', "#{Dir.home}/.kube/config")
       end
     end
