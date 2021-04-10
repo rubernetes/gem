@@ -16,8 +16,10 @@ RSpec.describe Rubernetes::Auth::Source do
   context 'with default KUBECONFIG' do
     before do
       ENV['KUBECONFIG'] = nil
-      kube_path = File.join(__dir__, '..', 'fixtures', '.kube', 'config')
-      allow(File).to receive(:read).with(Rubernetes::Auth::KubeConfig::KUBECONFIG_DEFAULT_PATH).and_return(File.read(kube_path))
+      kube_path = File.join(__dir__, '..', '..', 'fixtures', '.kube', 'config')
+      allow(File).to receive(:read).with(
+        Rubernetes::Auth::KubeConfig::KUBECONFIG_DEFAULT_PATH
+      ).and_return(File.read(kube_path))
       allow(File).to receive(:exist?).with(Rubernetes::Auth::ServiceAccount::TOKEN_PATH).and_return(false)
       allow(File).to receive(:exist?).with(Rubernetes::Auth::KubeConfig::KUBECONFIG_DEFAULT_PATH).and_return(true)
     end
@@ -29,9 +31,11 @@ RSpec.describe Rubernetes::Auth::Source do
 
   context "with ENV['KUBECONFIG']" do
     before do
-      kube_file_path = File.join(__dir__, '..', 'fixtures', '.kube', 'config')
+      kube_file_path = File.join(__dir__, '..', '..', 'fixtures', '.kube', 'config')
       allow(ENV).to receive(:[]).with('KUBECONFIG').and_return(kube_file_path)
-      allow(ENV).to receive(:fetch).with('KUBECONFIG', Rubernetes::Auth::KubeConfig::KUBECONFIG_DEFAULT_PATH).and_return(kube_file_path)
+      allow(ENV).to receive(:fetch).with(
+        'KUBECONFIG', Rubernetes::Auth::KubeConfig::KUBECONFIG_DEFAULT_PATH
+      ).and_return(kube_file_path)
       allow(File).to receive(:exist?).with(Rubernetes::Auth::ServiceAccount::TOKEN_PATH).and_return(false)
       allow(File).to receive(:exist?).with(kube_file_path).and_return(true)
     end

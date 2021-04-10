@@ -12,15 +12,15 @@ RSpec.describe Rubernetes::Auth::ServiceAccount do
       expect(authenticator).not_to be_nil
     end
 
-    it "reads api_endpoint" do
+    it 'reads api_endpoint' do
       expect(authenticator.api_endpoint).to eq('https://kubernetes.default.svc')
     end
 
-    it "sets cert_store in ssl_options" do
+    it 'sets cert_store in ssl_options' do
       expect(authenticator.ssl_options[:cert_store]).to be_nil
     end
 
-    it "sets auth_options as empty hash" do
+    it 'sets auth_options as empty hash' do
       expect(authenticator.auth_options).to eq({ bearer_token_file: described_class::TOKEN_PATH })
     end
   end
@@ -30,15 +30,15 @@ RSpec.describe Rubernetes::Auth::ServiceAccount do
       expect(authenticator).not_to be_nil
     end
 
-    it "reads api_endpoint" do
+    it 'reads api_endpoint' do
       expect(authenticator.api_endpoint).to eq('http://kubernetes.default.svc')
     end
 
-    it "sets cert_store in ssl_options" do
+    it 'sets cert_store in ssl_options' do
       expect(authenticator.ssl_options[:cert_store]).to be_nil
     end
 
-    it "sets auth_options as empty hash" do
+    it 'sets auth_options as empty hash' do
       expect(authenticator.auth_options).to eq({ bearer_token_file: described_class::TOKEN_PATH })
     end
   end

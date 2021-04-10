@@ -1,10 +1,12 @@
 require:
-- rubocop-rake
-- rubocop-rspec
+  - rubocop-rake
+  - rubocop-rspec
 
 AllCops:
   TargetRubyVersion: 2.5
 
+Metrics/BlockLength:
+  Max: 50
 Gemspec/DateAssignment:
   Enabled: true
 Layout/SpaceBeforeBrackets:
