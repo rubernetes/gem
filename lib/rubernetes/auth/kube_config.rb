@@ -7,8 +7,8 @@ module Rubernetes
     # It extracts the kube API endpoint and authentication details.
     class KubeConfig
       def initialize
-        config_file = ENV.fetch('KUBECONFIG', "#{Dir.home}/.kube/config")
-        config = Kubeclient::Config.read(config_file)
+        config_path = ENV.fetch('KUBECONFIG', "#{Dir.home}/.kube/config")
+        config = Kubeclient::Config.read(config_path)
         @context = config.context
       end
 
