@@ -3,7 +3,9 @@
 RSpec.describe Rubernetes::Auth::KubeConfig do
   context 'using KUBECONFIG ENV variable' do
     before do
-      ENV['KUBECONFIG'] = File.join(__dir__, '..', 'fixtures', '.kube', 'config')
+      kube_file_path = File.join(__dir__, '..', 'fixtures', '.kube', 'config')
+      allow(ENV).to receive(:[]).with('KUBECONFIG').and_return(kube_file_path)
+      allow(ENV).to receive(:fetch).with('KUBECONFIG', described_class::KUBECONFIG_DEFAULT_PATH).and_return(kube_file_path)
     end
 
     it "creates an object of #{described_class}" do
@@ -27,7 +29,7 @@ RSpec.describe Rubernetes::Auth::KubeConfig do
     before do
       ENV['KUBECONFIG'] = nil
       kube_path = File.join(__dir__, '..', 'fixtures', '.kube', 'config')
-      allow(File).to receive(:read).with("#{Dir.home}/.kube/config").and_return(File.read(kube_path))
+      allow(File).to receive(:read).with(described_class::KUBECONFIG_DEFAULT_PATH).and_return(File.read(kube_path))
     end
 
     it "creates an object of #{described_class}" do

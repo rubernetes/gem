@@ -6,8 +6,10 @@ module Rubernetes
     # It will try to read the KUBECONFIG from ENV first, otherwise it will fallback to ~/.kube/config.
     # It extracts the kube API endpoint and authentication details.
     class KubeConfig
+      KUBECONFIG_DEFAULT_PATH = "#{Dir.home}/.kube/config"
+
       def initialize
-        config_path = ENV.fetch('KUBECONFIG', "#{Dir.home}/.kube/config")
+        config_path = ENV.fetch('KUBECONFIG', KUBECONFIG_DEFAULT_PATH)
         config = Kubeclient::Config.read(config_path)
         @context = config.context
       end
