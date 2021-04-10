@@ -63,3 +63,4 @@ build-iPhoneSimulator/
 
 # Jetbrains
 .idea/
+.DS_STORE

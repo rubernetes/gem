@@ -8,12 +8,12 @@ Gem::Specification.new do |spec|
   spec.summary     = 'Build Kubernetes custom resources controllers in Ruby.'
   spec.description = 'A ruby gem to provide the base for building Kubernetes custom resources controllers in Ruby.'
 
-  spec.required_ruby_version = Gem::Requirement.new('>= 2.4.0')
+  spec.required_ruby_version = Gem::Requirement.new('>= 2.5.0')
 
   spec.license = 'MIT'
 
   spec.authors  = ['Tarek N. Samni', 'Ramy Aboul Naga', 'Hesham Youssef']
-  spec.email    = ['tarek.samni@gmail.com', 'ramy.naga@gmail.com', 'heshamyoussef79@gmail.com']
+  spec.email    = %w[tarek.samni@gmail.com ramy.naga@gmail.com heshamyoussef79@gmail.com]
   spec.homepage = 'https://github.com/rubernetes/gem'
 
   spec.metadata = {
@@ -25,8 +25,9 @@ Gem::Specification.new do |spec|
     'source_code_uri' => spec.homepage.to_s # /tree/v#{version}
   }
 
-  spec.files = Dir.chdir(File.expand_path(__dir__)) do
-    `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
-  end
+  spec.files = Dir['README.md', '{bin,lib}/**/*']
   spec.require_paths = ['lib']
+
+  # runtime dependencies
+  spec.add_dependency('kubeclient')
 end
