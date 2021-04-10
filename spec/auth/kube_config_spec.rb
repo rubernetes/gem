@@ -27,7 +27,7 @@ RSpec.describe Rubernetes::Auth::KubeConfig do
     before do
       ENV['KUBECONFIG'] = nil
       kube_path = File.join(__dir__, '..', 'fixtures', '.kube', 'config')
-      expect(File).to receive(:read).with("#{Dir.home}/.kube/config").and_return(File.read(kube_path))
+      allow(File).to receive(:read).with("#{Dir.home}/.kube/config").and_return(File.read(kube_path))
     end
 
     it "creates an object of #{described_class}" do
