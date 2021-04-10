@@ -3,8 +3,6 @@
 RSpec.describe Rubernetes::Auth::ServiceAccount do
   context 'with SSL' do
     before do
-      crt_path = File.join(__dir__, '..', 'fixtures', 'serviceaccount', 'ca.crt')
-      crt = File.read(crt_path)
       allow(File).to receive(:exist?).with(described_class::CRT_PATH).and_return(true)
     end
 
