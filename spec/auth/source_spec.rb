@@ -1,13 +1,15 @@
 # frozen_string_literal: true
 
 RSpec.describe Rubernetes::Auth::Source do
+  subject(:source) { described_class.new }
+
   context 'with serviceaccount' do
     before do
       allow(File).to receive(:exist?).with(Rubernetes::Auth::ServiceAccount::TOKEN_PATH).and_return(true)
     end
 
     it 'uses ServiceAccount authenticator' do
-      expect(subject.authenticator).to be_an_instance_of(Rubernetes::Auth::ServiceAccount)
+      expect(source.authenticator).to be_an_instance_of(Rubernetes::Auth::ServiceAccount)
     end
   end
 
@@ -21,7 +23,7 @@ RSpec.describe Rubernetes::Auth::Source do
     end
 
     it 'uses KubeConfig authenticator' do
-      expect(subject.authenticator).to be_an_instance_of(Rubernetes::Auth::KubeConfig)
+      expect(source.authenticator).to be_an_instance_of(Rubernetes::Auth::KubeConfig)
     end
   end
 
@@ -35,7 +37,7 @@ RSpec.describe Rubernetes::Auth::Source do
     end
 
     it 'uses KubeConfig authenticator' do
-      expect(subject.authenticator).to be_an_instance_of(Rubernetes::Auth::KubeConfig)
+      expect(source.authenticator).to be_an_instance_of(Rubernetes::Auth::KubeConfig)
     end
   end
 
@@ -46,7 +48,7 @@ RSpec.describe Rubernetes::Auth::Source do
     end
 
     it 'throws a MissingAuthSource exception' do
-      expect { subject }.to raise_exception(Rubernetes::MissingAuthSource)
+      expect { source }.to raise_exception(Rubernetes::MissingAuthSource)
     end
   end
 end
