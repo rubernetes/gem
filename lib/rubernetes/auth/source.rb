@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require 'rubernetes/auth/kube_config'
-require 'rubernetes/auth/service_account'
+require_relative 'kube_config'
+require_relative 'service_account'
 require 'forwardable'
 
 module Rubernetes

@@ -30,4 +30,5 @@ Gem::Specification.new do |spec|
 
   # runtime dependencies
   spec.add_dependency('kubeclient')
+  spec.add_dependency('logger')
 end

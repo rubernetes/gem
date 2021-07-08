@@ -1,0 +1,10 @@
+apiVersion: "storage.do/v1"
+kind: Space
+metadata:
+  name: my-do-space
+  namespace: default
+spec:
+  spaceName: "rubernetes"
+  region: "nyc3"
+  spacesKey: "access_key_id"
+  spacesSecret: "secret_access_key"
