@@ -7,8 +7,8 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    addressable (2.7.0)
-      public_suffix (>= 2.0.2, < 5.0)
+    addressable (2.8.1)
+      public_suffix (>= 2.0.2, < 6.0)
     ast (2.4.2)
     code-scanning-rubocop (0.5.0)
       rubocop (~> 1.0)
@@ -45,7 +45,7 @@ GEM
     parallel (1.20.1)
     parser (3.0.0.0)
       ast (~> 2.4.1)
-    public_suffix (4.0.6)
+    public_suffix (4.0.7)
     rainbow (3.0.0)
     rake (12.3.3)
     recursive-open-struct (1.1.3)
