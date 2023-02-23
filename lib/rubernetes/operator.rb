@@ -74,11 +74,14 @@ module Rubernetes
     end
 
     def set_status(event, patch)
-      @k8sclient.patch_entity(@crd_plural, event[:object][:metadata][:name], {status: patch}, 'merge-patch', @options[:namespace]) and return
+      name = event.dig(:object, :metadata, :name)
+      puts name
+      @k8sclient.patch_entity(@crd_plural, name, {status: patch}, 'merge-patch', @options[:namespace]) and return
     end
 
     def get_status(event)
-      @k8sclient.get_entity(@crd_plural, event[:object][:metadata][:name], @options[:namespace])[:status]
+      resource_name = event.dig(:object, :metadata, :name)
+      @k8sclient.get_entity(@crd_plural, resource_name, @options[:namespace]).dig(:status)
     end
 
     private
