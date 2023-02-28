@@ -15,7 +15,7 @@ RSpec/MultipleMemoizedHelpers:
   Max: 10
 RSpec/MessageSpies:
   Enabled: false
-Gemspec/DateAssignment:
+Gemspec/DeprecatedAttributeAssignment:
   Enabled: true
 Layout/SpaceBeforeBrackets:
   Enabled: true
