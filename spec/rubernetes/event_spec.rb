@@ -4,7 +4,7 @@ require 'tempfile'
 require 'yaml'
 
 RSpec.describe Rubernetes::Event do
-  subject { described_class.new(event, logger, store) }
+  subject(:test_event) { described_class.new(event, logger, store) }
 
   let(:event) do
     {
@@ -47,7 +47,7 @@ RSpec.describe Rubernetes::Event do
       end
 
       it 'calls the appropriate event handler and caches the event' do
-        subject.handle(event_handlers)
+        test_event.handle(event_handlers)
 
         expect(event_handlers[:added]).to have_received(:call).with(event)
         expect(store).to have_received(:[]=).with(event.dig(:object, :metadata, :uid),
@@ -70,7 +70,7 @@ RSpec.describe Rubernetes::Event do
       end
 
       it 'does not call the event handler or cache the event' do
-        subject.handle(event_handlers)
+        test_event.handle(event_handlers)
 
         expect(event_handlers[:added]).not_to have_received(:call)
         expect(store).not_to have_received(:commit)

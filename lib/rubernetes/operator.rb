@@ -87,15 +87,15 @@ module Rubernetes
 
     private
 
-    def handle_event(ev)
-      event = Event.new(ev, @logger, @store)
+    def handle_event(event)
+      k8s_event = Event.new(event, @logger, @store)
       handlers = {
         added: method(:added),
         modified: method(:modified),
         deleted: method(:deleted)
       }
 
-      event.handle(handlers)
+      k8s_event.handle(handlers)
     end
 
     def watcher
