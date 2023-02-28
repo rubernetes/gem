@@ -7,8 +7,6 @@ AllCops:
 
 Metrics/BlockLength:
   Max: 50
-Gemspec/DateAssignment:
-  Enabled: true
 Layout/SpaceBeforeBrackets:
   Enabled: true
 Lint/AmbiguousAssignment:
