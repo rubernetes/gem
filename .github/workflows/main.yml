@@ -24,8 +24,8 @@ jobs:
 
     - name: Build
       run: |
-        gem update --system 3.2.3
-        gem install bundler -v 2.2.8
+
+        gem install bundler -v 2.3.12
         bundle install
 
     - name: Rubocop run
