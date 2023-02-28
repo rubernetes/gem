@@ -1,7 +1,11 @@
+# frozen_string_literal: true
+
 require 'tempfile'
 require 'yaml'
 
 RSpec.describe Rubernetes::Event do
+  subject { described_class.new(event, logger, store) }
+
   let(:event) do
     {
       type: 'ADDED',
@@ -28,8 +32,6 @@ RSpec.describe Rubernetes::Event do
 
   let(:store) { PStore.new(store_path) }
 
-  subject { described_class.new(event, logger, store) }
-
   describe '#handle' do
     context 'when the event is not cached' do
       let(:event_handlers) { { added: ->(event) {} } }
@@ -48,7 +50,8 @@ RSpec.describe Rubernetes::Event do
         subject.handle(event_handlers)
 
         expect(event_handlers[:added]).to have_received(:call).with(event)
-        expect(store).to have_received(:[]=).with(event.dig(:object, :metadata, :uid), event.dig(:object, :metadata, :resourceVersion))
+        expect(store).to have_received(:[]=).with(event.dig(:object, :metadata, :uid),
+                                                  event.dig(:object, :metadata, :resourceVersion))
         expect(store).to have_received(:commit)
       end
     end
