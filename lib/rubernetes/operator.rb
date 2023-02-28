@@ -41,7 +41,7 @@ module Rubernetes
 
     def run
       @logger.info('start the operator')
-    
+
       loop do
         begin
           watcher.each do |event|
@@ -51,13 +51,14 @@ module Rubernetes
         rescue StandardError => e
           @logger.error(e.inspect)
         end
-    
+
         # do not overwhelm Kube API, relax between calls
         sleep(@options[:sleepTimer])
       end
     end
 
     protected
+
     def added(event)
       @logger.info('external handler(:added) called')
       @logger.debug(event.inspect)
@@ -76,25 +77,25 @@ module Rubernetes
     def set_status(event, patch)
       name = event.dig(:object, :metadata, :name)
       puts name
-      @k8sclient.patch_entity(@crd_plural, name, {status: patch}, 'merge-patch', @options[:namespace]) and return
+      @k8sclient.patch_entity(@crd_plural, name, { status: patch }, 'merge-patch', @options[:namespace]) and return
     end
 
     def get_status(event)
       resource_name = event.dig(:object, :metadata, :name)
-      @k8sclient.get_entity(@crd_plural, resource_name, @options[:namespace]).dig(:status)
+      @k8sclient.get_entity(@crd_plural, resource_name, @options[:namespace])[:status]
     end
 
     private
 
-    def handle_event(ev)
-      event = Event.new(ev, @logger, @store)
+    def handle_event(event)
+      k8s_event = Event.new(event, @logger, @store)
       handlers = {
         added: method(:added),
         modified: method(:modified),
         deleted: method(:deleted)
       }
-    
-      event.handle(handlers)
+
+      k8s_event.handle(handlers)
     end
 
     def watcher
