@@ -75,7 +75,6 @@ module Rubernetes
 
     def set_status(event, patch)
       name = event.dig(:object, :metadata, :name)
-      puts name
       @k8sclient.patch_entity(@crd_plural, name, {status: patch}, 'merge-patch', @options[:namespace]) and return
     end
 
