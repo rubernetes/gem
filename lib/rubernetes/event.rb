@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Rubernetes
+  # Event Class to handle the kubernetes events and make use of cache
   class Event
     attr_reader :event, :logger, :store
 
@@ -12,7 +13,7 @@ module Rubernetes
 
     def handle(event_handlers)
       logger.info('event received')
-      logger.debug("cached?: #{cached?.to_s}")
+      logger.debug("cached?: #{cached?}")
       return if cached?
 
       event_handlers[@event[:type].downcase.to_sym].call(event)
