@@ -1,7 +1,18 @@
 # <span style="color:blue">Rub</span><span style="color:red">ernetes</span>
-A ruby gem to provide the base for building Kubernetes custom resources operators in Ruby.
+Rubernetes is an easy-to-use, open-source framework for building Kubernetes controllers and operators using the Ruby programming language. This framework aims to simplify the development process of Kubernetes custom resources and automate application management on Kubernetes clusters.
+
+This project provides a lightweight, modular, and idiomatic Ruby approach to interact with the Kubernetes API and build custom controllers, leveraging the flexibility and expressiveness of the Ruby language.
 
 ![logo](./assets/logo.gif)
+
+## Features
+
+Easy-to-use and intuitive Ruby-based API for Kubernetes
+Automatic handling of Kubernetes events
+Customizable controller logic with minimal boilerplate
+Modular architecture for easy integration with other Ruby libraries and tools
+Comprehensive documentation and examples
+
 
 ## Installation
 
