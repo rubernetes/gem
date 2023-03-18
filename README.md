@@ -7,11 +7,11 @@ This project provides a lightweight, modular, and idiomatic Ruby approach to int
 
 ## Features
 
-Easy-to-use and intuitive Ruby-based API for Kubernetes
-Automatic handling of Kubernetes events
-Customizable controller logic with minimal boilerplate
-Modular architecture for easy integration with other Ruby libraries and tools
-Comprehensive documentation and examples
+- Easy-to-use and intuitive Ruby-based API for Kubernetes
+- Automatic handling of Kubernetes events
+- Customizable controller logic with minimal boilerplate
+- Modular architecture for easy integration with other Ruby libraries and tools
+- Comprehensive documentation and examples
 
 
 ## Installation
